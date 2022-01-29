@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TEams.Classes;
-
+using System.Linq;
 namespace TEams
 {
     class Program
@@ -27,19 +27,31 @@ namespace TEams
             employees = CreateEmployees(departments);
 
             // give Angie a 10% raise, she is doing a great job!
+            foreach (Employee employee in employees)
+            {
+                if (employee.FirstName.Equals("Angie"))
+                {
+                    employee.RaiseSalary(10);
+                }
 
+            }
 
             // print all employees
             PrintEmployees(employees);
 
+            Dictionary<string, Project> projects = new Dictionary<string, Project>();
+
             // create the TEams project
-            CreateTeamsProject();
+            projects["TEams"] = CreateTeamsProject(employees);
+
+            
+
 
             // create the Marketing Landing Page Project
-            CreateLandingPageProject();
+            projects["Marking Landing Page"] = CreateLandingPageProject(employees);
 
             // print each project name and the total number of employees on the project
-            PrintProjectsReport();
+            PrintProjectsReport(projects);
         }
 
         /**
@@ -98,25 +110,66 @@ namespace TEams
         /**
          * Create the 'TEams' project.
          */
-        private void CreateTeamsProject()
+        private Project CreateTeamsProject(List<Employee> employees)
         {
+
+            Project newProject = new Project("TEams", "Project Management Software", "10/10/2020", "11/10/2020");
+
+            foreach  (Employee employee in employees)
+            {
+                if (employee.Department.DepartmentId.Equals(3))
+                {
+                    newProject.TeamMembers.Add(employee);
+
+                }
+
+
+            }
+
+            return newProject;
+
 
         }
 
         /**
          * Create the 'Marketing Landing Page' project.
          */
-        private void CreateLandingPageProject()
+        private Project CreateLandingPageProject(List<Employee> employees)
         {
+
+            Project newProject = new Project("Marketing Landing Page", "Lead Capture Landing Page for Marketing", "10/10/2020", "10/17/2020");
+
+            foreach (Employee employee in employees)
+            {
+                if (employee.Department.DepartmentId.Equals(1))
+                {
+                    newProject.TeamMembers.Add(employee);
+
+                }
+
+
+            }
+
+            return newProject;
+           
 
         }
 
         /**
          * Print out each project in the collection.
          */
-        private void PrintProjectsReport()
+        private void PrintProjectsReport(Dictionary<string, Project> projects)
         {
             Console.WriteLine("\n------------- PROJECTS ------------------------------");
+
+            foreach (KeyValuePair<string, Project> kvp in projects)
+            {
+
+                Console.WriteLine($"{kvp.Key}: {kvp.Value.TeamMembers.Count}");
+
+
+            }
+
 
         }
     }
