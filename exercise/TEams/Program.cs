@@ -9,20 +9,11 @@ namespace TEams
         static void Main(string[] args)
         {
 
-
-
-            Console.WriteLine("Zac was here!");
-
-
-
-
-
-
-
+            
             Program program = new Program();
             program.Run();
         }
-        //testing merge
+        
         private void Run()
         {
             // create some departments
