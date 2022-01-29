@@ -167,7 +167,7 @@ namespace TEams
 
                 Console.WriteLine($"{kvp.Key}: {kvp.Value.TeamMembers.Count}");
 
-
+                 
             }
 
 
