@@ -41,6 +41,11 @@ namespace TEams.Classes
             }
         }
 
+        public void RaiseSalary(double percent)
+        {
+            Salary = Salary + ((percent / 100) * Salary); 
+
+        }
 
 
 
