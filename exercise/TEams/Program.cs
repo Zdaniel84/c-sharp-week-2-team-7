@@ -8,6 +8,17 @@ namespace TEams
     {
         static void Main(string[] args)
         {
+
+
+
+            Console.WriteLine("Caleb was here!");
+
+
+
+
+
+
+
             Program program = new Program();
             program.Run();
         }
