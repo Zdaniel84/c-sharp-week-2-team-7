@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TEams.Classes;
-using System.Linq;
+
 namespace TEams
 {
     class Program
