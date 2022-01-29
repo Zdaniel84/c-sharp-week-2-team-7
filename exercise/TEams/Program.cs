@@ -8,17 +8,7 @@ namespace TEams
     {
         static void Main(string[] args)
         {
-
-
-
-            Console.WriteLine("Caleb was here!");
-
-
-
-
-
-
-
+            Console.WriteLine("merging is kool");
             Program program = new Program();
             program.Run();
         }
