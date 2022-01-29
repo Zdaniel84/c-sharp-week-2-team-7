@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TEams.Classes;
 
 namespace TEams
 {
@@ -14,19 +15,22 @@ namespace TEams
         private void Run()
         {
             // create some departments
-            CreateDepartments();
+            List<Department> departments = new List<Department>();
+            departments = CreateDepartments();
 
             // print each department by name
-            PrintDepartments();
+            PrintDepartments(departments);
+
 
             // create employees
-            CreateEmployees();
+            List<Employee> employees = new List<Employee>();
+            employees = CreateEmployees(departments);
 
             // give Angie a 10% raise, she is doing a great job!
 
 
             // print all employees
-            PrintEmployees();
+            PrintEmployees(employees);
 
             // create the TEams project
             CreateTeamsProject();
@@ -41,35 +45,54 @@ namespace TEams
         /**
          * Create departments and add them to the collection of departments
          */
-        private void CreateDepartments()
+        private List<Department> CreateDepartments()
         {
+            List<Department> departments = new List<Department>();
+            departments.Add(new Department(1, "Marketing"));
+            departments.Add(new Department(2, "Sales"));
+            departments.Add(new Department(3, "Engineering"));
 
+            return departments;
         }
 
         /**
          * Print out each department in the collection.
          */
-        private void PrintDepartments()
+
+
+
+
+        private void PrintDepartments(List<Department> departments)
         {
             Console.WriteLine("------------- DEPARTMENTS ------------------------------");
-
+            foreach (Department department in departments)
+            {
+                Console.WriteLine($"{department.Name}");
+            }
         }
 
         /**
          * Create employees and add them to the collection of employees
          */
-        private void CreateEmployees()
+        private List<Employee> CreateEmployees(List<Department> departments)
         {
-
+            List<Employee> newEmployees = new List<Employee>();
+            newEmployees.Add(new Employee(1, "Dean", "Johnson", "djohnson@teams.com", departments[2], "08/21/2020"));
+            newEmployees.Add(new Employee(2, "Angie", "Smith", "asmith@teams.com", departments[2], "08/21/2020"));
+            newEmployees.Add(new Employee(3, "Margaret", "Thompson", "mthompson@teams.com", departments[0], "08/21/2020"));
+            return newEmployees;
         }
 
         /**
          * Print out each employee in the collection.
          */
-        private void PrintEmployees()
+        private void PrintEmployees(List<Employee> employees)
         {
             Console.WriteLine("\n------------- EMPLOYEES ------------------------------");
-
+            foreach (Employee employee in employees)
+            {
+                Console.WriteLine($"{employee.FullName} {employee.Salary} {employee.Department.Name}");
+            }
         }
 
         /**
