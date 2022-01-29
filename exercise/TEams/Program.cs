@@ -11,7 +11,7 @@ namespace TEams
             Program program = new Program();
             program.Run();
         }
-
+        //testing merge
         private void Run()
         {
             // create some departments
@@ -21,7 +21,7 @@ namespace TEams
             // print each department by name
             PrintDepartments(departments);
 
-
+              
             // create employees
             List<Employee> employees = new List<Employee>();
             employees = CreateEmployees(departments);
